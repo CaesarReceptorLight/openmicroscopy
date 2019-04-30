@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<!--
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 
+# $Id$
+# 
+# Copyright (C) 2016 Friedrich Schiller University Jena.
+# Mathematics and Computer Science Department 
+# All rights reserved.
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+
+<!--
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Written by:  Daniel Walther, Daniel.Walther(at)uni-jena.de
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+
+<beans>
+  <bean parent="level1" id="internal-ome.api.IReceptorLightService" class="ome.logic.ReceptorLightServiceImpl">
+    <property name="preferenceContext" ref="preferenceContext"/>
+  </bean>
+ 
+  <bean id="managed-ome.api.IReceptorLightService" parent="managedService">
+    <property name="proxyInterfaces">
+      <list>
+        <value>ome.api.IReceptorLightService</value>
+      </list>
+    </property>
+    <property name="target" ref="internal-ome.api.IReceptorLightService"/>
+  </bean>
+</beans>
+

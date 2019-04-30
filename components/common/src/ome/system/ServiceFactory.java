@@ -19,6 +19,9 @@ import ome.api.IMetadata;
 import ome.api.IPixels;
 import ome.api.IProjection;
 import ome.api.IQuery;
+import ome.api.IReceptorLightService;
+import ome.api.IReceptorLightFileManager;
+import ome.api.IReceptorLightSearchService;
 import ome.api.IRenderingSettings;
 import ome.api.IRepositoryInfo;
 import ome.api.ISession;
@@ -177,6 +180,18 @@ public class ServiceFactory {
 
     public IQuery getQueryService() {
         return getServiceByClass(IQuery.class);
+    }
+
+    public IReceptorLightService getReceptorLightService() {
+        return getServiceByClass(IReceptorLightService.class);
+    }
+    
+    public IReceptorLightFileManager getReceptorLightFileManager() {
+        return getServiceByClass(IReceptorLightFileManager.class);
+    }
+    
+    public IReceptorLightSearchService getReceptorLightSearchService() {
+        return getServiceByClass(IReceptorLightSearchService.class);
     }
 
     public IShare getShareService() {

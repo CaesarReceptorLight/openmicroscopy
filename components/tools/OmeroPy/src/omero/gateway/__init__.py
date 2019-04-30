@@ -1973,6 +1973,9 @@ class _BlitzGateway (object):
                 self, 'createRawFileStore')
             self._proxies['repository'] = ProxyObjectWrapper(
                 self, 'getRepositoryInfoService')
+            self._proxies['rlFileManager'] = ProxyObjectWrapper(self, 'getReceptorLightFileManager')
+            self._proxies['rlService'] = ProxyObjectWrapper(self, 'getReceptorLightService')
+            self._proxies['rlSearchService'] = ProxyObjectWrapper(self, 'getReceptorLightSearchService')
             self._proxies['roi'] = ProxyObjectWrapper(self, 'getRoiService')
             self._proxies['script'] = ProxyObjectWrapper(
                 self, 'getScriptService')
@@ -2535,6 +2538,33 @@ class _BlitzGateway (object):
         """
 
         return self._proxies['metadata']
+
+    def getReceptorLightFileManager(self):
+        """
+        Gets reference to the RL File manager service from ProxyObjectWrapper.
+
+        :return:    omero.gateway.ProxyObjectWrapper
+        """
+
+        return self._proxies['rlFileManager']
+
+    def getReceptorLightService(self):
+        """
+        Gets reference to the RL service from ProxyObjectWrapper.
+
+        :return:    omero.gateway.ProxyObjectWrapper
+        """
+
+        return self._proxies['rlService']
+
+    def getReceptorLightSearchService(self):
+        """
+        Gets reference to the RL search service from ProxyObjectWrapper.
+
+        :return:    omero.gateway.ProxyObjectWrapper
+        """
+
+        return self._proxies['rlSearchService']
 
     def getRoiService(self):
         """

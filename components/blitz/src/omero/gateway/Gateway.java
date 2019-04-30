@@ -55,6 +55,9 @@ import omero.api.IMetadataPrx;
 import omero.api.IPixelsPrx;
 import omero.api.IProjectionPrx;
 import omero.api.IQueryPrx;
+import omero.api.IReceptorLightServicePrx;
+import omero.api.IReceptorLightFileManagerPrx;
+import omero.api.IReceptorLightSearchServicePrx;
 import omero.api.IRenderingSettingsPrx;
 import omero.api.IRepositoryInfoPrx;
 import omero.api.IRoiPrx;
@@ -676,6 +679,57 @@ public class Gateway implements AutoCloseable {
         Connector c = getConnector(ctx, true, false);
         if (c != null)
             return c.getQueryService();
+        return null;
+    }
+
+    /**
+     * Returns the {@link IReceptorLightServicePrx} service.
+     * 
+     * @param ctx
+     *            The {@link SecurityContext}
+     * @return See above.
+     * @throws DSOutOfServiceException
+     *             Thrown if the service cannot be initialized.
+     */
+    public IReceptorLightServicePrx getReceptorLightService(SecurityContext ctx)
+            throws DSOutOfServiceException {
+        Connector c = getConnector(ctx, true, false);
+        if (c != null)
+            return c.getReceptorLightService();
+        return null;
+    }
+    
+    /**
+     * Returns the {@link IReceptorLightFileManagerPrx} service.
+     * 
+     * @param ctx
+     *            The {@link SecurityContext}
+     * @return See above.
+     * @throws DSOutOfServiceException
+     *             Thrown if the service cannot be initialized.
+     */
+    public IReceptorLightFileManagerPrx getReceptorLightFileManager(SecurityContext ctx)
+            throws DSOutOfServiceException {
+        Connector c = getConnector(ctx, true, false);
+        if (c != null)
+            return c.getReceptorLightFileManager();
+        return null;
+    }
+    
+    /**
+     * Returns the {@link IReceptorLightSearchServicePrx} service.
+     * 
+     * @param ctx
+     *            The {@link SecurityContext}
+     * @return See above.
+     * @throws DSOutOfServiceException
+     *             Thrown if the service cannot be initialized.
+     */
+    public IReceptorLightSearchServicePrx getReceptorLightSearchService(SecurityContext ctx)
+            throws DSOutOfServiceException {
+        Connector c = getConnector(ctx, true, false);
+        if (c != null)
+            return c.getReceptorLightSearchService();
         return null;
     }
 

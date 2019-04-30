@@ -778,4 +778,377 @@
 		<entry name="Other"/>
 		<entry name="Unknown"/>
 	</enum>
+
+<!-- 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ReceptorLight Types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+-->
+	<type id="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="UId" type="int"/>
+			<required name="Name" type="string"/>
+			<required name="OwnerId" type="int"/>
+			<required name="OwnerGroupId" type="int"/>
+			<required name="OriginalObjectId" type="int"/>
+			<required name="ChildObjectIds" type="ome.model.core.IntValueList"/>
+			<required name="CreationDateTime" type="string"/>
+			<required name="Status" type="int"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.StringValueList">
+		<properties>
+			<zeromany name="Values" type="ome.model.core.StringValue" ordered="false" inverse="stringValueList"/>
+		</properties>
+	</type>
+
+	<type id="ome.model.core.StringValue">
+		<properties>
+			<required name="Value" type="string"/>
+			<manyzero name="stringValueList" type="ome.model.core.StringValueList" inverse="Values"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.IntValueList">
+		<properties>
+			<zeromany name="Values" type="ome.model.core.IntValue" ordered="false" inverse="intValueList"/>
+		</properties>
+	</type>
+
+	<type id="ome.model.core.IntValue">
+		<properties>
+			<required name="Value" type="int"/>
+			<manyzero name="intValueList" type="ome.model.core.IntValueList" inverse="Values"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.RlExperiment" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="NameOfGroup" type="string"/>
+			<required name="NameOfProject" type="string"/>
+			<required name="Date" type="string"/>
+			<required name="Time" type="string"/>
+			<required name="RootFolderId" type="int"/>
+			<required name="DatasetId" type="int"/>
+			<required name="Description" type="string"/>
+			<required name="MicroscopeConfig" type="string"/>
+			<required name="AdditionalInformation" type="string"/>                
+			<required name="Type" type="string"/>
+			<required name="Subclassification" type="string"/>
+			<required name="Preparation" type="string"/>
+			<required name="Transfection" type="string"/>
+			<required name="RNAInjection" type="string"/>
+			<required name="Incubation" type="string"/>
+			<required name="Fixation" type="string"/>                
+			<required name="BathSolution" type="string"/>
+			<required name="PipetteSolution" type="string"/>
+			<required name="RatingOfExperiment" type="string"/>
+			<required name="Tags" type="string"/>
+			<required name="ContactPerson" type="string"/>
+			<required name="OtherInformation" type="string"/>
+			<required name="Notes" type="string"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.RlVector" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="UniqueId" type="string"/>
+			<required name="Description" type="string"/>
+			<required name="LinkedFileIds" type="ome.model.core.IntValueList"/>
+			<required name="Size" type="int"/>
+			<required name="ExpressionSystem" type="string"/>
+			<required name="BacterialStrain" type="string"/>
+			<required name="HighLowCopy" type="string"/>
+			<required name="BacterialResistance" type="string"/>
+			<required name="GrowthConditions" type="string"/>
+			<required name="StableCallSelection" type="string"/>
+			<required name="ReferencePaper" type="string"/>
+			<required name="ReferencePaperDOI" type="string"/>
+			<required name="ReferencePaperPubMedId" type="string"/>
+			<required name="Origin" type="string"/>
+			<required name="OriginId" type="string"/>
+			<required name="Distributor" type="string"/>
+			<required name="DistributorProductId" type="string"/>
+			<required name="ReceivedDate" type="string"/>
+			<required name="Verification" type="string"/>
+			<required name="VerificationLink" type="string"/>
+			<required name="Concentration" type="string"/>
+			<required name="PlasmidStorage" type="string"/>
+			<required name="ContactPerson" type="string"/>
+			<required name="ProteinSequences" type="string"/>
+			<required name="AliquotsSentTo" type="string"/>
+			<required name="Notes" type="string"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.RlPlasmid" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="UniqueId" type="string"/>
+			<required name="Description" type="string"/>
+			<required name="LinkedFileIds" type="ome.model.core.IntValueList"/>
+			<required name="EncodedProteins" type="string"/>
+			<required name="DonorOrganism" type="string"/>
+			<required name="EncodedTags" type="string"/>
+			<required name="UsedVectorBackbone" type="string"/>
+			<required name="PlasmidSizeLength" type="string"/>
+			<required name="Modifications" type="string"/>
+			<required name="ExpressionSystem" type="string"/>
+			<required name="BacterialStrain" type="string"/>
+			<required name="HighLowCopy" type="string"/>
+			<required name="BacterialResistance" type="string"/>
+			<required name="GrowthConditions" type="string"/>
+			<required name="StableCallSelection" type="string"/>
+			<required name="CDNASource" type="string"/>
+			<required name="CloningStrategyUsedPrimers" type="string"/>
+			<required name="ReferencePaper" type="string"/>
+			<required name="ReferencePaperDOI" type="string"/>
+			<required name="ReferencePaperPubMedId" type="string"/>
+			<required name="NCBIGenBankId" type="string"/>
+			<required name="FASTALink" type="string"/>
+			<required name="OtherLinks" type="string"/>
+			<required name="Origin" type="string"/>
+			<required name="OriginId" type="string"/>
+			<required name="Distributor" type="string"/>
+			<required name="DistributorProductId" type="string"/>
+			<required name="ReceivedDate" type="string"/>
+			<required name="Verification" type="string"/>
+			<required name="VerificationLink" type="string"/>
+			<required name="Concentration" type="string"/>
+			<required name="PlasmidStorage" type="string"/>
+			<required name="ContactPerson" type="string"/>
+			<required name="ProteinSequences" type="string"/>
+			<required name="AliquotsSentTo" type="string"/>
+			<required name="Notes" type="string"/>
+		</properties>
+	</type>
+
+	<type id="ome.model.core.RlProtein" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="UniqueId" type="string"/>
+			<required name="Description" type="string"/>
+			<required name="LinkedFileIds" type="ome.model.core.IntValueList"/>
+			<required name="UsedPlasmidVector" type="string"/>
+			<required name="Organism" type="string"/>
+			<required name="Length" type="string"/>
+			<required name="Modification" type="string"/>
+			<required name="ReferencePaper" type="string"/>
+			<required name="ReferencePaperDOI" type="string"/>
+			<required name="ReferencePaperPubMedId" type="string"/>
+			<required name="ExpressionProtocol" type="string"/>
+			<required name="ExpressionStorage" type="string"/>
+			<required name="DateOfPurification" type="string"/>
+			<required name="PurificationProtocol" type="string"/>
+			<required name="Concentration" type="string"/>
+			<required name="Verification" type="string"/>
+			<required name="Storage" type="string"/>
+			<required name="Origin" type="string"/>
+			<required name="OriginId" type="string"/>
+			<required name="ReceivedDate" type="string"/>
+			<required name="ContactPerson" type="string"/>
+			<required name="AliquotsSentTo" type="string"/>
+			<required name="Notes" type="string"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.RlChemicalSubstance" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="UniqueId" type="string"/>
+			<required name="Description" type="string"/>
+			<required name="LinkedFileIds" type="ome.model.core.IntValueList"/>
+			<required name="MolecularWeight" type="double"/>
+			<required name="MolecularFormula" type="string"/>
+			<required name="StructuralFormulaLink" type="string"/>
+			<required name="CASNumber" type="string"/>
+			<required name="Distributor" type="string"/>
+			<required name="DistributorProductId" type="string"/>
+			<required name="LotNumber" type="string"/>
+			<required name="PurityGrade" type="string"/>
+			<required name="Verification" type="string"/>
+			<required name="ReceivedDate" type="string"/>
+			<required name="StockSolution" type="string"/>
+			<required name="ContactPerson" type="string"/>
+			<required name="AliquotsSentTo" type="string"/>
+			<required name="Notes" type="string"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.RlSolution" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="UniqueId" type="string"/>
+			<required name="Description" type="string"/>
+			<required name="LinkedFileIds" type="ome.model.core.IntValueList"/>
+			<required name="UseOfSolution" type="string"/>
+			<required name="Components" type="string"/>
+			<required name="PhValue" type="string"/>
+			<required name="Solvent" type="string"/>
+			<required name="Storage" type="string"/>
+			<required name="Origin" type="string"/>
+			<required name="ProductId" type="string"/>
+			<required name="LotNumber" type="string"/>
+			<required name="ContactPerson" type="string"/>
+			<required name="AliquotsSentTo" type="string"/>
+			<required name="Notes" type="string"/>
+		</properties>
+	</type>
+
+	<type id="ome.model.core.RlDna" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="UniqueId" type="string"/>
+			<required name="Description" type="string"/>
+			<required name="LinkedFileIds" type="ome.model.core.IntValueList"/>
+			<required name="UsedVectorPlasmid" type="string"/>
+			<required name="Preparation" type="string"/>
+			<required name="AmplificationResults" type="string"/>
+			<required name="Concentration" type="string"/>
+			<required name="Storage" type="string"/>
+			<required name="ContactPerson" type="string"/>
+			<required name="AliquotsSentTo" type="string"/>
+			<required name="Notes" type="string"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.RlRna" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="UniqueId" type="string"/>
+			<required name="Description" type="string"/>
+			<required name="LinkedFileIds" type="ome.model.core.IntValueList"/>
+			<required name="UsedVectorPlasmid" type="string"/>
+			<required name="Preparation" type="string"/>
+			<required name="LinearizationSite" type="string"/>
+			<required name="PreparationResult" type="string"/>
+			<required name="Concentration" type="string"/>
+			<required name="Storage" type="string"/>
+			<required name="ContactPerson" type="string"/>
+			<required name="AliquotsSentTo" type="string"/>
+			<required name="Notes" type="string"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.RlRestrictionEnzyme" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="UniqueId" type="string"/>
+			<required name="Description" type="string"/>
+			<required name="LinkedFileIds" type="ome.model.core.IntValueList"/>
+			<required name="RestrictionSite" type="string"/>
+			<required name="Concentration" type="string"/>
+			<required name="ReactionCondition" type="string"/>
+			<required name="HeatInactivation" type="string"/>
+			<required name="MethylationSensitivity" type="string"/>
+			<required name="Distributor" type="string"/>
+			<required name="DistributorProductId" type="string"/>
+			<required name="ContactPerson" type="string"/>
+			<required name="AliquotsSentTo" type="string"/>
+			<required name="Notes" type="string"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.RlFluorescentProtein" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="UniqueId" type="string"/>
+			<required name="Description" type="string"/>
+			<required name="LinkedFileIds" type="ome.model.core.IntValueList"/>
+			<required name="UsedVectorPlasmid" type="string"/>                
+			<required name="Organism" type="string"/>
+			<required name="LengthWeight" type="string"/>
+			<required name="Modification" type="string"/>
+			<required name="ReferencePaper" type="string"/>
+			<required name="ReferencePaperDOI" type="string"/>
+			<required name="ReferencePaperPubMedId" type="string"/>
+			<required name="PDbId" type="string"/>
+			<required name="AbsorptionMaximum" type="double"/>
+			<required name="AbsorptionSpectrumFileId" type="int"/>
+			<required name="AbsorptionCoefficient" type="double"/>
+			<required name="ExcitationMaximum" type="double"/>
+			<required name="ExcitationSpectrumFileId" type="int"/>
+			<required name="EmissionMaximum" type="double"/>
+			<required name="EmissionSpectrumFileId" type="int"/>
+			<required name="QuantumYield" type="double"/>
+			<required name="Lifetime" type="double"/>                
+			<required name="ContactPerson" type="string"/>
+			<required name="Notes" type="string"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.RlOligonucleotide" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="UniqueId" type="string"/>
+			<required name="Description" type="string"/>
+			<required name="LinkedFileIds" type="ome.model.core.IntValueList"/>
+			<required name="SequenceOfOligonucleotide" type="string"/>
+			<required name="Length" type="double"/>
+			<required name="GcContent" type="double"/>
+			<required name="Tm" type="double"/>
+			<required name="Distributor" type="string"/>
+			<required name="DistributorProductId" type="string"/>
+			<required name="ContactPerson" type="string"/>
+			<required name="AliquotsSentTo" type="string"/>
+			<required name="Notes" type="string"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.RlFileInformation" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="Size" type="int"/>
+			<required name="FileType" type="ome.model.enums.RlFileType"/>
+			<required name="SubFileIds" type="ome.model.core.IntValueList"/>
+			<required name="OmeroId" type="int"/>
+		</properties>
+	</type>
+	
+	<type id="ome.model.core.RlSearchResult" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="TypeName" type="string"/>
+			<required name="MemberName" type="string"/>
+		</properties>
+	</type>
+
+	<type id="ome.model.core.RlUiElementInfo">
+		<properties>
+			<required name="UiName" type="string"/>
+			<required name="UiHelp" type="string"/>
+			<required name="Index" type="int"/>
+			<required name="IsVisible" type="boolean"/>
+		</properties>
+	</type>
+
+	<enum id="ome.model.enums.RlFileType">
+		<entry name="ReceptorLightFile"/>
+		<entry name="OmeroFile"/>
+		<entry name="Folder"/>        
+	</enum>
+
+	<enum id="ome.model.enums.RlUsedMaterialType">
+		<entry name="UNKNOWN"/>
+		<entry name="RlExperiment"/>
+		<entry name="RlVector"/>
+		<entry name="RlPlasmid"/>
+		<entry name="RlProtein"/>
+		<entry name="RlChemicalSubstance"/>
+		<entry name="RlSolution"/>
+		<entry name="RlDna"/>
+		<entry name="RlRna"/>
+		<entry name="RlRestrictionEnzyme"/>
+		<entry name="RlFluorescentProtein"/>
+		<entry name="RlOligonucleotide"/>
+		<entry name="RlFileInformation"/>
+		<entry name="RlSop"/>
+	</enum>
+
+	<type id="ome.model.core.RlUsedMaterial" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="SourceID" type="int"/>
+			<required name="SourceType" type="ome.model.enums.RlUsedMaterialType"/>
+			<required name="TargetID" type="int"/>
+			<required name="TargetType" type="ome.model.enums.RlUsedMaterialType"/>
+			<required name="UsedIn" type="string"/>
+		</properties>
+	</type>
+
+	<type id="ome.model.core.RlSop" superclass="ome.model.core.RlBaseObject">
+		<properties>
+			<required name="Description" type="string"/>
+			<required name="UsedFileId" type="int"/>
+		</properties>
+	</type>
 </types>

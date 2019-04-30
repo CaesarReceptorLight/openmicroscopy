@@ -152,6 +152,9 @@ module omero {
             IPixels*         getPixelsService() throws ServerError;
             IProjection*     getProjectionService() throws ServerError;
             IQuery*          getQueryService() throws ServerError;
+            IReceptorLightService*  getReceptorLightService() throws ServerError;
+            IReceptorLightFileManager*  getReceptorLightFileManager() throws ServerError;
+            IReceptorLightSearchService*  getReceptorLightSearchService() throws ServerError;
             IRenderingSettings* getRenderingSettingsService() throws ServerError;
             IRepositoryInfo* getRepositoryInfoService() throws ServerError;
             IRoi*            getRoiService() throws ServerError;

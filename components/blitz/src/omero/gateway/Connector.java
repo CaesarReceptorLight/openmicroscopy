@@ -65,6 +65,12 @@ import omero.api.IProjectionPrx;
 import omero.api.IProjectionPrxHelper;
 import omero.api.IQueryPrx;
 import omero.api.IQueryPrxHelper;
+import omero.api.IReceptorLightServicePrx;
+import omero.api.IReceptorLightServicePrxHelper;
+import omero.api.IReceptorLightFileManagerPrx;
+import omero.api.IReceptorLightFileManagerPrxHelper;
+import omero.api.IReceptorLightSearchServicePrx;
+import omero.api.IReceptorLightSearchServicePrxHelper;
 import omero.api.IRenderingSettingsPrx;
 import omero.api.IRenderingSettingsPrxHelper;
 import omero.api.IRepositoryInfoPrx;
@@ -362,6 +368,45 @@ class Connector
         return IQueryPrxHelper.uncheckedCast(
                 get(omero.constants.QUERYSERVICE.value,
                         unsecureClient == null));
+    }
+	
+	/**
+     * Returns the {@link IReceptorLightServicePrx} service.
+     * 
+     * @return See above.
+     * @throws Throwable Thrown if the service cannot be initialized.
+     */
+    IReceptorLightServicePrx getReceptorLightService()
+             throws DSOutOfServiceException
+    {
+        return IReceptorLightServicePrxHelper.uncheckedCast(
+                get(omero.constants.RECEPTORLIGHTSERVICE.value, unsecureClient == null));
+    }
+    
+    /**
+     * Returns the {@link IReceptorLightFileManagerPrx} service.
+     * 
+     * @return See above.
+     * @throws Throwable Thrown if the service cannot be initialized.
+     */
+    IReceptorLightFileManagerPrx getReceptorLightFileManager()
+             throws DSOutOfServiceException
+    {
+        return IReceptorLightFileManagerPrxHelper.uncheckedCast(
+                get(omero.constants.RECEPTORLIGHTFILEMANAGER.value, unsecureClient == null));
+    }
+    
+    /**
+     * Returns the {@link IReceptorLightSearchServicePrx} service.
+     * 
+     * @return See above.
+     * @throws Throwable Thrown if the service cannot be initialized.
+     */
+    IReceptorLightSearchServicePrx getReceptorLightSearchService()
+             throws DSOutOfServiceException
+    {
+        return IReceptorLightSearchServicePrxHelper.uncheckedCast(
+                get(omero.constants.RECEPTORLIGHTSEARCHSERVICE.value, unsecureClient == null));
     }
 
     /**

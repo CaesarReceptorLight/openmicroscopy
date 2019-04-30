@@ -59,7 +59,29 @@ module omero {
         class Share;
         class TextAnnotation;
         class Well;
-
+        class StringValue;
+        class StringValueList;
+        class IntValueList;
+        class IntValueListList;
+        class RlExperiment;
+        class RlVector;
+        class RlPlasmid;
+        class RlProtein;
+        class RlChemicalSubstance;
+        class RlSolution;
+        class RlDna;
+        class RlRna;
+        class RlRestrictionEnzyme;
+        class RlFluorescentProtein;
+        class RlOligonucleotide;
+        class RlFileInformation;
+        class RlSearchResult;
+        class RlFileType;
+        class RlUiHelperInfo;
+        class RlUiElementInfo;
+        class RlUsedMaterialType;
+        class RlUsedMaterial;
+        class RlSop;
     };
 
 };

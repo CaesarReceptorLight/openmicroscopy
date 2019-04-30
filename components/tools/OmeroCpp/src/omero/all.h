@@ -23,6 +23,9 @@
 #include<omero/api/IPixels.h>
 #include<omero/api/IProjection.h>
 #include<omero/api/IQuery.h>
+#include<omero/api/IReceptorLightService.h>
+#include<omero/api/IReceptorLightFileManager.h>
+#include<omero/api/IReceptorLightSearchService.h>
 #include<omero/api/IRenderingSettings.h>
 #include<omero/api/IRepositoryInfo.h>
 #include<omero/api/IRoi.h>

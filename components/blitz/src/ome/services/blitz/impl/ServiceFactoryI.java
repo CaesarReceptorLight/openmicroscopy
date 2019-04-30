@@ -48,6 +48,12 @@ import omero.api.IProjectionPrx;
 import omero.api.IProjectionPrxHelper;
 import omero.api.IQueryPrx;
 import omero.api.IQueryPrxHelper;
+import omero.api.IReceptorLightServicePrx;
+import omero.api.IReceptorLightServicePrxHelper;
+import omero.api.IReceptorLightFileManagerPrx;
+import omero.api.IReceptorLightFileManagerPrxHelper;
+import omero.api.IReceptorLightSearchServicePrx;
+import omero.api.IReceptorLightSearchServicePrxHelper;
 import omero.api.IRenderingSettingsPrx;
 import omero.api.IRenderingSettingsPrxHelper;
 import omero.api.IRepositoryInfoPrx;
@@ -95,6 +101,9 @@ import omero.constants.PROJECTIONSERVICE;
 import omero.constants.QUERYSERVICE;
 import omero.constants.RAWFILESTORE;
 import omero.constants.RAWPIXELSSTORE;
+import omero.constants.RECEPTORLIGHTSERVICE;
+import omero.constants.RECEPTORLIGHTFILEMANAGER;
+import omero.constants.RECEPTORLIGHTSEARCHSERVICE;
 import omero.constants.RENDERINGENGINE;
 import omero.constants.RENDERINGSETTINGS;
 import omero.constants.REPOSITORYINFO;
@@ -307,6 +316,21 @@ public final class ServiceFactoryI extends omero.cmd.SessionI implements _Servic
 
     public IQueryPrx getQueryService(Ice.Current current) throws ServerError {
         return IQueryPrxHelper.uncheckedCast(getByName(QUERYSERVICE.value,
+                current));
+    }
+
+    public IReceptorLightServicePrx getReceptorLightService(Ice.Current current) throws ServerError {
+        return IReceptorLightServicePrxHelper.uncheckedCast(getByName(RECEPTORLIGHTSERVICE.value,
+                current));
+    }
+    
+    public IReceptorLightFileManagerPrx getReceptorLightFileManager(Ice.Current current) throws ServerError {
+        return IReceptorLightFileManagerPrxHelper.uncheckedCast(getByName(RECEPTORLIGHTFILEMANAGER.value,
+                current));
+    }
+    
+    public IReceptorLightSearchServicePrx getReceptorLightSearchService(Ice.Current current) throws ServerError {
+        return IReceptorLightSearchServicePrxHelper.uncheckedCast(getByName(RECEPTORLIGHTSEARCHSERVICE.value,
                 current));
     }
 
