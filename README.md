@@ -3,7 +3,7 @@ This repository forks from [openmicroscopy/openmicroscopy](https://github.com/op
 **The extensions are included at the branch _RL_v5.4.10_**. To use our extensions, you need to:
 1.	Install [OMERO 5.4.10]( https://docs.openmicroscopy.org/omero/5.4.10/)
 2.	Clone this repository (git clone https://github.com/CaesarReceptorLight/openmicroscopy.git)
-3.	Checkout tag _v5.4.10_ (git checkout RL_v5.4.10). 
+3.	Checkout branch _RL_v5.4.10_ (git checkout RL_v5.4.10). 
 
 
 **ORIGINAL README.md:**
