@@ -1,0 +1,117 @@
+\documentclass[a4paper,12pt,english]{article}
+\usepackage[top=1in, bottom=1in, left=0.5in, right=0.5in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[toc,page]{appendix}
+\usepackage{ulem}
+
+\makeatletter
+
+\makeatother
+
+\lstset{
+    frame=single, 
+		basicstyle=\ttfamily\scriptsize, 
+		breaklines=true, 
+		columns=fullflexible, 
+		tabsize=2
+}
+
+\begin{document}
+
+\title{Installation of OMERO extension \textbf{\textit{CAESAR}} }
+
+\author{caesar@uni-jena.de}
+
+\maketitle
+
+\section{Installation of OMERO}
+
+Our development was done with \textbf{OMERO 5.4.10} installed at CentOS Linux release 7.2.1511 (Core)(x64). We cannot guarantied, that it will work with other OMERO versions or at other operation systems.
+
+The official OMERO installation guide can found here: 
+\href{https://docs.openmicroscopy.org/omero/5.4.10/sysadmins/unix/server-centos7-ice36.html}{OMERO Documentation}
+
+Please follow the installation and configuration steps.
+
+\section{Prepare OMERO for Caesar}
+
+\begin{enumerate}
+
+\item Create PostgreSQL database for ReceptorLight services\textcolor{red}{*}
+
+\textcolor{red}{\textbf{Login as ROOT}}
+
+\begin{lstlisting}
+sudo -u postgres createuser -P -D -R -S RECEPTOR_USER
+    pw: RECEPTOR_PASSWORD
+su - postgres -c "createdb -E UTF8 -O 'RECEPTOR_USER' 'RECEPTOR_DB_NAME'"
+systemctl restart postgresql-9.6.service
+\end{lstlisting}
+
+\textcolor{red}{*} {\textbf{Use valid and strong values for RECEPTOR\_USER, RECEPTOR\_DB\_NAME and RECEPTOR\_PASSWORD!}}
+
+\item Add ReceptorLight database information to omero configuration
+
+\textcolor{red}{\textbf{Login as omero system user}}
+
+\begin{lstlisting}
+OMERO.server/bin/omero config set omero.db.rl.name "RECEPTOR_DB_NAME" 
+OMERO.server/bin/omero config set omero.db.rl.user "RECEPTOR_USER" 
+OMERO.server/bin/omero config set omero.db.rl.pass "RECEPTOR_PASSWORD"
+\end{lstlisting}
+
+\end{enumerate}
+
+\section{Building of OMERO and Caesar extension}
+
+\begin{enumerate}
+
+\item Prepare Build System
+
+\textcolor{red}{\textbf{Login as ROOT}}
+
+\begin{lstlisting}
+yum -y update
+pip install --upgrade pip
+pip install --upgrade setuptools
+yum -y install git
+yum -y install java-1.8.0-openjdk-devel
+cd /etc/yum.repos.d
+sudo wget https://zeroc.com/download/Ice/3.6/el7/zeroc-ice3.6.repo
+cd ~
+yum -y install ice-all-runtime ice-all-devel
+\end{lstlisting}
+
+\item Clone repository
+
+\textcolor{red}{\textbf{Login as system user}}
+
+\begin{lstlisting}
+git clone https://github.com/CaesarReceptorLight/openmicroscopy.git
+\end{lstlisting}
+
+\item Checkout Caesar development path
+
+\begin{lstlisting}
+git checkout RL_v5.4.10
+\end{lstlisting}
+
+\item Build sources\\
+
+Move to cloned repository directory and open file \textbf{\textit{buildOmeroCaesar.sh}} in any text editor. Change \textbf{\textit{sourceDir}} and \textbf{\textit{destinationDir}} (line 3 and 4) to your conditions. \textbf{\textit{sourceDir}} is the folder of the git repository and \textbf{\textit{destinationDir}} is the folder of your installed OMERO server. Store the file and run the building script. The script builds the omero source code. If successful, the build targets will copied to installed OMERO server and the server will be restarted. If necessary set execution rights to script (\textit{chmod +x buildOmeroCaesar.sh}).
+
+\begin{lstlisting}
+./buildOmeroCaesar.sh clean
+./buildOmeroCaesar.sh
+\end{lstlisting}
+
+\end{enumerate}
+
+\end{document}
